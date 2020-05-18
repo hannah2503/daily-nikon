@@ -44,9 +44,16 @@ export default ({ pageContext: { photo } }) => {
 								</a>
 							</div>
 						)}
-						{pageNumber === totalPages && (
+						{pageNumber > 1 && pageNumber === totalPages && (
 							<div>
 								<a className="page-links" href={`/day/${pageNumber - 1}`}>
+									Back
+								</a>
+							</div>
+						)}
+						{totalPages <= 1 && (
+							<div>
+								<a className="page-links" href={`/`}>
 									Back
 								</a>
 							</div>
