@@ -23,7 +23,7 @@
             right: 30px;
             top: 25px;
             z-index: -1;
-            animation-delay: 2s;
+            animation-delay: 3s;
         }
 
         .square-sm {
@@ -39,7 +39,7 @@
             -moz-border-radius: 5%;
             -ms-border-radius: 5%;
             -o-border-radius: 5%;
-            animation-delay: 7s;
+            animation-delay: 1s;
         }
 
         .square-layer {
@@ -56,23 +56,24 @@
                 -moz-border-radius: 5%;
                 -ms-border-radius: 5%;
                 -o-border-radius: 5%;
+                animation-delay: 7s;
+            }
+
+            &-2 {
+                height: 240px;
+                width: 240px;
+                border: 1px solid #ececec;
+                position: relative;
+                right: 100px;
+                bottom: 100px;
+                z-index: -1;
+                border-radius: 5%;
+                -webkit-border-radius: 5%;
+                -moz-border-radius: 5%;
+                -ms-border-radius: 5%;
+                -o-border-radius: 5%;
                 animation-delay: 5s;
             }
-             &-2 {
-                 height: 240px;
-                 width: 240px;
-                 border: 1px solid #ececec;
-                 position: relative;
-                 right: 100px;
-                 bottom: 100px;
-                 z-index: -1;
-                 border-radius: 5%;
-                 -webkit-border-radius: 5%;
-                 -moz-border-radius: 5%;
-                 -ms-border-radius: 5%;
-                 -o-border-radius: 5%;
-                 animation-delay: 5s;
-             }
 
         }
 
@@ -126,18 +127,21 @@
 
         @keyframes dapple {
 
-            0%,
-            100% {
+            0% {
                 border-color: #ececec;
             }
-
             50% {
-
+                border-width: 1px;
                 border-color: #888888;
             }
 
             70% {
+                border-width: 2px;
                 border-color: #b5b5b5;
+            }
+
+            100% {
+                border-color: #ececec;
             }
         }
     }

@@ -51,14 +51,15 @@
   .heading-link {
     font-size: 27px;
     text-decoration: none;
-    color: black;
 
     h1 {
       margin: 10px;
-    }
+      color: #494949;
 
-    &:hover {
-      color: #ececec;
+
+      &:hover {
+        color: #ececec;
+      }
     }
   }
 

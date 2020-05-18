@@ -11,12 +11,16 @@
     .thumbnail {
         height: 200px;
         overflow: hidden;
+        opacity: 1;
 
         img {
             max-width: 280px;
             width: fit-content;
             margin: 10px;
+        }
 
+        &:hover {
+            opacity: 0.8;
         }
     }
 }
@@ -26,7 +30,8 @@
     text-decoration: none;
     margin-left: 20px;
     text-shadow: 1px 5px 1px #ececec;
-    
+    color: #494949
+
 }
 
 .heading-l {
