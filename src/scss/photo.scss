@@ -1,0 +1,126 @@
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100vh
+  }
+
+  .sub-text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .image-container {
+    padding: 20px;
+
+    img {
+      max-height: 300px;
+      height: 100%;
+      max-width: 95vw;
+      width: auto\9;
+      border-radius: 5%;
+      -webkit-border-radius: 5%;
+      -moz-border-radius: 5%;
+      -ms-border-radius: 5%;
+      -o-border-radius: 5%;
+    }
+  }
+
+  .page-links-container {
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .page-links {
+    height: 40px;
+    width: 60px;
+    padding: 5px;
+    text-align: center;
+    color: grey;
+    text-decoration: none;
+
+    &:hover {
+      color: lightgray;
+    }
+  }
+
+  .heading-link {
+    font-size: 27px;
+    text-decoration: none;
+    color: black;
+
+    h1 {
+      margin: 10px;
+    }
+
+    &:hover {
+      color: #ececec;
+    }
+  }
+
+  @media all and (min-width: 760px) {
+
+    .page-links-container {
+      margin: 10px;
+      display: flex;
+      justify-content: center;
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .page-links {
+      height: 40px;
+      width: 60px;
+      padding: 5px;
+      text-align: center;
+      color: grey;
+      text-decoration: none;
+
+      &:hover {
+        color: lightgray;
+      }
+    }
+
+    .heading-link {
+      font-size: 40px;
+      text-decoration: none;
+      color: #ececec;
+      position: relative;
+      top: 20px;
+      left: 100px;
+
+      &:hover {
+        color: #888888;
+      }
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: left;
+      align-items: center;
+    }
+
+    .image-container {
+      padding: 20px;
+
+      img {
+        max-width: 70vw;
+        max-height: 600px;
+        height: 100%;
+        width: auto\9;
+        border-radius: 5%;
+        -webkit-border-radius: 5%;
+        -moz-border-radius: 5%;
+        -ms-border-radius: 5%;
+        -o-border-radius: 5%;
+      }
+    }
+
+
+
+  }
