@@ -4,7 +4,7 @@ import SEO from '../components/seo';
 import '../scss/main.scss';
 
 export default ({ pageContext: { photo } }) => {
-	const { pageNumber, totalPages, LastModified, Key } = photo;
+	const { pageNumber, totalPages, Key } = photo;
 	const day = Key.split('_')[0] + " "+  Key.split('_')[1];
 	return (
 		<Layout sticky={true}>

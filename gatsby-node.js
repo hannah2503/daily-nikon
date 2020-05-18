@@ -5,8 +5,13 @@
  */
 
 // You can delete this file if you're not using it
-exports.createPages = async ({ actions, graphql }) => {
-  const {data} = await graphql(`
+exports.createPages = async ({
+  actions,
+  graphql
+}) => {
+  const {
+    data
+  } = await graphql(`
   query MyQuery {
     allS3Image {
       edges {
@@ -23,19 +28,21 @@ exports.createPages = async ({ actions, graphql }) => {
   }
  `)
 
-const totalPages = data.allS3Image.edges.length;
-data.allS3Image.edges.forEach((item, index) => {
+  const totalPages = data.allS3Image.edges.length;
+  data.allS3Image.edges.sort((a, b) => {
+    return parseInt(a.node.Key.split('_')[0]) - parseInt(b.node.Key.split('_')[0])
+  }).forEach((item, index) => {
 
-  actions.createPage({
-    path: `day/${index+1}`,
-    component: require.resolve('./src/templates/photo.js'),
-    context: {
-      photo: {
-        ...item.node,
-        totalPages,
-        pageNumber: index+1
+    actions.createPage({
+      path: `day/${index+1}`,
+      component: require.resolve('./src/templates/photo.js'),
+      context: {
+        photo: {
+          ...item.node,
+          totalPages,
+          pageNumber: index + 1
+        }
       }
-    }
-  })
-});
+    })
+  });
 }

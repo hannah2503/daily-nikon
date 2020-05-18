@@ -5,19 +5,33 @@ import SEO from '../components/seo';
 import '../scss/main.scss';
 
 const IndexPage = ({ data }) => {
-	const images = data.allS3Image.edges;
+	const images = data.allS3Image.edges.sort((a, b) => {
+		return (
+			new Date(
+				a.node.Key.split('_')[0] +
+					a.node.Key.split('_')[1] +
+					new Date().getFullYear()
+			) -
+			new Date(
+				b.node.Key.split('_')[0] +
+					b.node.Key.split('_')[1] +
+					new Date().getFullYear()
+			)
+		);
+	});
 	return (
 		<Layout sticky={false}>
 			<SEO title="Home" />
-			<h1 className="heading-xl">Daily Nikon</h1>
+			<h1 className="heading-xl"> Daily Nikon </h1>{' '}
 			<div className="shape square">
-				<div className="shape square-layer-1"></div>
-				<div className="shape square-layer-2"></div>
-			</div>
+				<div className="shape square-layer-1"> </div>{' '}
+				<div className="shape square-layer-2"> </div>{' '}
+			</div>{' '}
 			<div className="shape square-sm">
-				<div className="shape square-layer-1"></div>
-			</div>
+				<div className="shape square-layer-1"> </div>{' '}
+			</div>{' '}
 			<div className="thumbnails">
+				{' '}
 				{images.map((item, i) => (
 					<div key={i} className="thumbnail">
 						<a key={i} href={`/day/${i + 1}`}>
@@ -25,12 +39,12 @@ const IndexPage = ({ data }) => {
 								key={i}
 								src={`https://mydailynikon.s3-eu-west-1.amazonaws.com/${item.node.Key}`}
 								alt={`${item.node.Key}`}
-							/>
-						</a>
+							/>{' '}
+						</a>{' '}
 					</div>
-				))}
-			</div>
-			<h2 className="heading-l"> by Hannah Cross</h2>
+				))}{' '}
+			</div>{' '}
+			<h2 className="heading-l"> by Hannah Cross </h2>
 		</Layout>
 	);
 };
