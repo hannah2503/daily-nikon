@@ -5,9 +5,10 @@ import '../scss/main.scss';
 
 export default ({ pageContext: { photo } }) => {
 	const { pageNumber, totalPages, LastModified, Key } = photo;
+	const day = Key.split('_')[0] + " "+  Key.split('_')[1];
 	return (
 		<Layout sticky={true}>
-			<SEO title={`Photo ${Key}`} />
+			<SEO title={`Photo ${day}`} />
 			<a className="heading-link" href="/">
 				<h1>Daily Nikon</h1>
 			</a>
@@ -25,7 +26,7 @@ export default ({ pageContext: { photo } }) => {
 				<div className="sub-text">
 					<div>
 						<small>
-							© Daily Nikon - Hannah Cross {LastModified.split('T')[0]}
+							© Daily Nikon - {day}
 						</small>
 					</div>
 					<div className="page-links-container">
