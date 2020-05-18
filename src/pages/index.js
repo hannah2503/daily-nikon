@@ -25,10 +25,9 @@ const IndexPage = ({ data }) => {
 			<h1 className="heading-xl"> Daily Nikon </h1>{' '}
 			<div className="shape square">
 				<div className="shape square-layer-1"> </div>{' '}
-				<div className="shape square-layer-2"> </div>{' '}
 			</div>{' '}
 			<div className="shape square-sm">
-				<div className="shape square-layer-1"> </div>{' '}
+				<div className="shape square-layer-2"> </div>{' '}
 			</div>{' '}
 			<div className="thumbnails">
 				{' '}
