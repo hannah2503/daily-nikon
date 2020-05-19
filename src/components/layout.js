@@ -18,7 +18,7 @@ const Layout = ({ sticky, children }) => {
 				<footer
 					className={sticky ? 'footer footer-sticky' : ' footer footer-fixed'}
 				>
-					<p>© {new Date().getFullYear()} hbmc experiments</p>
+					<p>© {new Date().getFullYear()} adventures first, tea after.</p>
 				</footer>
 			</div>
 		</>

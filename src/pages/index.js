@@ -26,7 +26,7 @@ const IndexPage = ({ data }) => {
 			<h1 className="heading-xl"> Daily Nikon </h1>{' '}
 			<h2 className="heading-l">
 				{' '}
-				Viennese, frappuccino irish espresso pumpkin spice aromatic instant.{' '}
+				After sixty-six days of lockdown living, I decided to pick up a camera and have a look around...{' '}
 			</h2>
 			<div className="shape square">
 				<div className="shape square-layer-1"> </div>{' '}
