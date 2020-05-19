@@ -1,6 +1,7 @@
 import React from 'react';
+import '../scss/main.scss';
 
-export default (pageNumber = 1, totalPages = 1) => {
+function Navigation({pageNumber, totalPages}) {
 	return (
 		<div className="page-links-container">
 			{pageNumber === 1 && pageNumber < totalPages && (
@@ -37,4 +38,6 @@ export default (pageNumber = 1, totalPages = 1) => {
 			)}
 		</div>
 	);
-};
+}
+
+export default Navigation;
