@@ -5,13 +5,18 @@ import '../scss/main.scss';
 
 export default ({ pageContext: { photo } }) => {
 	const { pageNumber, totalPages, Key } = photo;
-	const day = Key.split('_')[0] + " "+  Key.split('_')[1];
+	const day = `${Key.split('_')[0]} ${
+		Key.split('_')[1]
+	} ${new Date().getFullYear()}`;
 	return (
 		<Layout sticky={true}>
 			<SEO title={`Photo ${day}`} />
 			<a className="heading-link" href="/">
-				<h1>Daily Nikon</h1>
+				<span> ◁ </span>
 			</a>
+			<div className="header">
+				<h2>{day}</h2>
+			</div>
 			<div className="shape circle"></div>
 			<div className="shape circle-sm">
 				<div className="shape circle-layer"></div>
@@ -25,9 +30,7 @@ export default ({ pageContext: { photo } }) => {
 				</div>
 				<div className="sub-text">
 					<div>
-						<small>
-							© Daily Nikon - {day}
-						</small>
+						<small>© Daily Nikon - {day}</small>
 					</div>
 					<div className="page-links-container">
 						{pageNumber === 1 && pageNumber < totalPages && (

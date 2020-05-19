@@ -12,6 +12,7 @@
         height: 200px;
         overflow: hidden;
         opacity: 1;
+        filter: grayscale(100%);
 
         img {
             max-width: 280px;
@@ -20,7 +21,7 @@
         }
 
         &:hover {
-            opacity: 0.8;
+            opacity: 0.5;
         }
     }
 }
