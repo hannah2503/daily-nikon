@@ -17,11 +17,18 @@ exports.createPages = async ({
       edges {
         node {
           id
-          Url
-          Key
+          ETag
           Extension
-          Name
+          IsTruncated
+          Key
           LastModified
+          KeyCount
+          MaxKeys
+          Name
+          Prefix
+          StorageClass
+          Url
+          Size
         }
       }
     }

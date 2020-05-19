@@ -61,41 +61,41 @@
 
         }
 
-        .circle {
-            height: 700px;
-            width: 700px;
-            border-radius: 50%;
-            border: 1px solid #ececec;
-            position: absolute;
-            right: 0;
-            top: 20px;
-            z-index: -1;
-            animation-delay: 2s;
-        }
+        // .circle {
+        //     height: 700px;
+        //     width: 700px;
+        //     border-radius: 50%;
+        //     border: 1px solid #ececec;
+        //     position: absolute;
+        //     right: 0;
+        //     top: 20px;
+        //     z-index: -1;
+        //     animation-delay: 2s;
+        // }
 
-        .circle-sm {
-            height: 200px;
-            width: 200px;
-            border: 1px solid #b5b5b5;
-            position: absolute;
-            left: 140px;
-            bottom: 20px;
-            z-index: -1;
-            border-radius: 50%;
-            animation-delay: 7s;
-        }
+        // .circle-sm {
+        //     height: 200px;
+        //     width: 200px;
+        //     border: 1px solid #b5b5b5;
+        //     position: absolute;
+        //     left: 140px;
+        //     bottom: 20px;
+        //     z-index: -1;
+        //     border-radius: 50%;
+        //     animation-delay: 7s;
+        // }
 
-        .circle-layer {
-            height: 400px;
-            width: 400px;
-            border: 1px solid #888888;
-            position: absolute;
-            left: 140px;
-            bottom: 100px;
-            z-index: -1;
-            border-radius: 50%;
-            animation-delay: 5s;
-        }
+        // .circle-layer {
+        //     height: 400px;
+        //     width: 400px;
+        //     border: 1px solid #888888;
+        //     position: absolute;
+        //     left: 140px;
+        //     bottom: 100px;
+        //     z-index: -1;
+        //     border-radius: 50%;
+        //     animation-delay: 5s;
+        // }
 
         @keyframes dapple {
 
