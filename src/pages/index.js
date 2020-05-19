@@ -8,21 +8,26 @@ const IndexPage = ({ data }) => {
 	const images = data.allS3Image.edges.sort((a, b) => {
 		return (
 			new Date(
-				a.node.Key.split('_')[0] +
-					a.node.Key.split('_')[1] +
+				b.node.Key.split('_')[0] +
+					b.node.Key.split('_')[1] +
 					new Date().getFullYear()
 			) -
 			new Date(
-				b.node.Key.split('_')[0] +
-					b.node.Key.split('_')[1] +
+				a.node.Key.split('_')[0] +
+					a.node.Key.split('_')[1] +
 					new Date().getFullYear()
 			)
 		);
 	});
+
 	return (
 		<Layout sticky={false}>
 			<SEO title="Home" />
 			<h1 className="heading-xl"> Daily Nikon </h1>{' '}
+			<h2 className="heading-l">
+				{' '}
+				Viennese, frappuccino irish espresso pumpkin spice aromatic instant.{' '}
+			</h2>
 			<div className="shape square">
 				<div className="shape square-layer-1"> </div>{' '}
 			</div>{' '}
@@ -31,19 +36,27 @@ const IndexPage = ({ data }) => {
 			</div>{' '}
 			<div className="thumbnails">
 				{' '}
-				{images.map((item, i) => (
-					<div key={i} className="thumbnail">
-						<a key={i} href={`/day/${i + 1}`}>
-							<img
-								key={i}
-								src={`https://mydailynikon.s3-eu-west-1.amazonaws.com/${item.node.Key}`}
-								alt={`${item.node.Key}`}
-							/>{' '}
-						</a>{' '}
-					</div>
-				))}{' '}
+				{images.map((item, i) => {
+					const arr = item.node.Key.split('.')[0].split('_');
+					arr.splice(2, 0, '#');
+					const title = arr.join(' ');
+					return (
+						<>
+							<div key={i} className="thumbnail">
+								<a key={i} href={`/day/${i + 1}`}>
+									<img
+										key={i}
+										src={`https://mydailynikon.s3-eu-west-1.amazonaws.com/${item.node.Key}`}
+										alt={`${item.node.Key}`}
+										loading="lazy"
+									/>
+								</a>
+								<h3 key={i + 1}>{title}</h3>
+							</div>
+						</>
+					);
+				})}{' '}
 			</div>{' '}
-			<h2 className="heading-l"> by Hannah Cross </h2>
 		</Layout>
 	);
 };

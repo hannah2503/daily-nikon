@@ -26,6 +26,7 @@ export default ({ pageContext: { photo } }) => {
 					<img
 						src={`https://mydailynikon.s3-eu-west-1.amazonaws.com/${Key}`}
 						alt="daily nikon"
+						loading="lazy"
 					/>
 				</div>
 				<div className="sub-text">

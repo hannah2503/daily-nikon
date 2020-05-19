@@ -30,7 +30,7 @@ exports.createPages = async ({
 
   const totalPages = data.allS3Image.edges.length;
   data.allS3Image.edges.sort((a, b) => {
-    return parseInt(a.node.Key.split('_')[0]) - parseInt(b.node.Key.split('_')[0])
+    return parseInt(b.node.Key.split('_')[0]) - parseInt(a.node.Key.split('_')[0])
   }).forEach((item, index) => {
 
     actions.createPage({

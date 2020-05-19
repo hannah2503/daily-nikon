@@ -13,11 +13,7 @@
         .square {
             height: 500px;
             width: 500px;
-            border-radius: 5%;
-            -webkit-border-radius: 5%;
-            -moz-border-radius: 5%;
-            -ms-border-radius: 5%;
-            -o-border-radius: 5%;
+            border-radius: 50%;
             border: 1px solid #888888;
             position: absolute;
             right: 30px;
@@ -34,11 +30,7 @@
             left: 140px;
             bottom: 20px;
             z-index: -1;
-            border-radius: 5%;
-            -webkit-border-radius: 5%;
-            -moz-border-radius: 5%;
-            -ms-border-radius: 5%;
-            -o-border-radius: 5%;
+            border-radius: 50%;
             animation-delay: 1s;
         }
 
@@ -51,11 +43,7 @@
                 right: -100px;
                 bottom: -400px;
                 z-index: -1;
-                border-radius: 5%;
-                -webkit-border-radius: 5%;
-                -moz-border-radius: 5%;
-                -ms-border-radius: 5%;
-                -o-border-radius: 5%;
+                border-radius: 50%;
                 animation-delay: 7s;
             }
 
@@ -67,11 +55,7 @@
                 right: 100px;
                 bottom: 100px;
                 z-index: -1;
-                border-radius: 5%;
-                -webkit-border-radius: 5%;
-                -moz-border-radius: 5%;
-                -ms-border-radius: 5%;
-                -o-border-radius: 5%;
+                border-radius: 50%;
                 animation-delay: 5s;
             }
 
@@ -81,10 +65,6 @@
             height: 700px;
             width: 700px;
             border-radius: 50%;
-            -webkit-border-radius: 50%;
-            -moz-border-radius: 50%;
-            -ms-border-radius: 50%;
-            -o-border-radius: 50%;
             border: 1px solid #ececec;
             position: absolute;
             right: 0;
@@ -102,10 +82,6 @@
             bottom: 20px;
             z-index: -1;
             border-radius: 50%;
-            -webkit-border-radius: 50%;
-            -moz-border-radius: 50%;
-            -ms-border-radius: 50%;
-            -o-border-radius: 50%;
             animation-delay: 7s;
         }
 
@@ -118,10 +94,6 @@
             bottom: 100px;
             z-index: -1;
             border-radius: 50%;
-            -webkit-border-radius: 50%;
-            -moz-border-radius: 50%;
-            -ms-border-radius: 50%;
-            -o-border-radius: 50%;
             animation-delay: 5s;
         }
 
