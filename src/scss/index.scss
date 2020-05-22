@@ -9,10 +9,8 @@
 .heading-l {
 	font-size: 25px;
 	text-align: right;
-	width: 60%;
-	margin: 0 auto;
 	text-shadow: 1px 5px 1px #ececec;
-	align-self: flex-end;
+	margin-right: 20px;
 }
 
 .thumbnails {
@@ -76,11 +74,11 @@
 
 	aside {
 		display: flex;
-		width: 40%;
+		width: 45%;
 	}
 
 	.heading-l {
-		font-size: 55px;
+		font-size: 50px;
 	}
 
 	.thumbnails {
