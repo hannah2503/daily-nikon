@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { Suspense } from 'react';
+import { Img } from 'react-image';
 import { graphql } from 'gatsby';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
@@ -21,49 +22,50 @@ const IndexPage = ({ data }) => {
 	});
 
 	return (
-		<Layout sticky={false}>
-			<SEO title="Home" />
-			<h1 className="heading-xl"> Daily Nikon </h1>{' '}
-			<div className="flex-container">
-				<aside>
-					{' '}
-					<h2 className="heading-l">
+		<Suspense>
+			<Layout sticky={false}>
+				<SEO title="Home" />
+				<h1 className="heading-xl"> Daily Nikon </h1>{' '}
+				<div className="flex-container">
+					<aside>
 						{' '}
-						After sixty - six days of lockdown living, I decided to pick up a
-						camera and have a look around...{' '}
-					</h2>
-				</aside>
-				<div className="shape square">
-					<div className="shape square-layer-1"> </div>{' '}
-				</div>{' '}
-				<div className="shape square-sm">
-					<div className="shape square-layer-2"> </div>{' '}
-				</div>{' '}
-				<div className="thumbnails">
-					{' '}
-					{images.map((item, i) => {
-						const arr = item.node.Key.split('.')[0].split('_');
-						arr.splice(2, 0, '#');
-						const title = arr.join(' ');
-						return (
-							<>
-								<div key={i} className="thumbnail">
-									<a key={i} href={`/day/${i + 1}`}>
-										<img
-											key={i}
-											src={`https://mydailynikon.s3-eu-west-1.amazonaws.com/${item.node.Key}`}
-											alt={`${item.node.Key}`}
-											loading="lazy"
-										/>
-									</a>
-									<h3 key={i + 1}>{title}</h3>
-								</div>
-							</>
-						);
-					})}{' '}
-				</div>{' '}
-			</div>
-		</Layout>
+						<h2 className="heading-l">
+							{' '}
+							After sixty - six days of lockdown living, I decided to pick up a
+							camera and have a look around...{' '}
+						</h2>
+					</aside>
+					<div className="shape square">
+						<div className="shape square-layer-1"> </div>{' '}
+					</div>{' '}
+					<div className="shape square-sm">
+						<div className="shape square-layer-2"> </div>{' '}
+					</div>{' '}
+					<div className="thumbnails">
+						{' '}
+						{images.map((item, i) => {
+							const arr = item.node.Key.split('.')[0].split('_');
+							arr.splice(2, 0, '#');
+							const title = arr.join(' ');
+							return (
+								<>
+									<div key={i} className="thumbnail">
+										<a key={i} href={`/day/${i + 1}`}>
+											<Img
+												src={`https://mydailynikon.s3-eu-west-1.amazonaws.com/${item.node.Key}`}
+												key={item.node.Key}
+												alt={item.node.Key}
+											/>{' '}
+										</a>
+										<h3 key={i + 1}>{title}</h3>
+									</div>
+								</>
+							);
+						})}{' '}
+					</div>{' '}
+				</div>
+			</Layout>
+		</Suspense>
 	);
 };
 
