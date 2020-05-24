@@ -17,7 +17,7 @@ const Layout = ({ children }) => {
 				<header></header>
 				<main>{children}</main>
 				<footer>
-					<p>© {new Date().getFullYear()} adventures first, tea after. All photos taken with a Nikon D40X. </p>
+					<p>© {new Date().getFullYear()} - Adventures first, tea after. All photos taken with a Nikon D40X. Website built with GatsbyJS. </p>
 				</footer>
 			</div>
 		</>

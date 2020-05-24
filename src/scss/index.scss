@@ -1,7 +1,7 @@
 .heading-xl {
 	font-size: 45px;
 	text-decoration: none;
-	margin-left: 20px;
+	margin-right: 20px;
 	text-shadow: 1px 5px 1px #ececec;
 	color: #494949;
 }
@@ -67,18 +67,28 @@
 		flex-direction: row-reverse;
 	}
 
-	.heading-xl {
-		font-size: 75px;
-		margin-left: 20px;
-	}
-
 	aside {
 		display: flex;
-		width: 45%;
-	}
+		flex-direction: column;
+		width: 50%;
 
-	.heading-l {
-		font-size: 50px;
+		.heading-xl {
+			font-size: 75px;
+			text-align: right;
+
+		}
+
+		.heading-l {
+			font-size: 50px;
+			text-align: right;
+
+		}
+
+		p {
+			font-size: 20px;
+			text-align: right;
+			margin-right: 20px;
+		}
 	}
 
 	.thumbnails {

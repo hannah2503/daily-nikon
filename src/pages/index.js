@@ -28,14 +28,12 @@ const IndexPage = ({ data }) => {
 		<Suspense>
 			<Layout>
 				<SEO title="Home" />
-				<h1 className="heading-xl"> Daily Nikon </h1>
 
 				<div className="flex-container">
 					<aside>
-						<h2 className="heading-l">
-							After sixty - six days of lockdown living, I decided to pick up a
-							camera and have a look around...
-						</h2>
+						<h1 className="heading-xl"> Daily Nikon </h1>
+						<h2 className="heading-l">Hannah Cross</h2>
+						<p>Photography & Web Development</p>
 					</aside>
 					<div className="thumbnails">
 						{images.map((item, i) => {
