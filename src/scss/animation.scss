@@ -1,0 +1,14 @@
+    img {
+        animation: fadeIn ease-in 3s;
+    }
+
+
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            visibility: visible;
+        }
+    }
