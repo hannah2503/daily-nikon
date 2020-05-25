@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import { Img } from 'react-image';
 
 import SEO from '../components/seo';
@@ -8,10 +8,9 @@ import '../scss/main.scss';
 
 export default ({ pageContext: { photo } }) => {
 	const { Key, pageNumber, totalPages, imgUrl, day } = photo;
-	
 
 	return (
-		<Suspense>
+		<>
 			<SEO title={`Photo ${day}`} />
 
 			<header>
@@ -35,6 +34,6 @@ export default ({ pageContext: { photo } }) => {
 					<Navigation pageNumber={pageNumber} totalPages={totalPages} />
 				</div>
 			</main>
-		</Suspense>
+		</>
 	);
 };

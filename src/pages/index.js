@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import { Img } from 'react-image';
 import { graphql } from 'gatsby';
 import VisibilitySensor from 'react-visibility-sensor';
@@ -25,45 +25,43 @@ const IndexPage = ({ data }) => {
 	});
 
 	return (
-		<Suspense>
-			<Layout>
-				<SEO title="Home" />
+		<Layout>
+			<SEO title="Home" />
 
-				<div className="flex-container">
-					<aside>
-						<h1 className="heading-xl"> Daily Nikon </h1>
-						<h2 className="heading-l">Hannah Cross</h2>
-						<p>Photography & Web Development</p>
-					</aside>
-					<div className="thumbnails">
-						{images.map((item, i) => {
-							const arr = item.node.Key.split('.')[0].split('_');
-							arr.splice(2, 0, '#');
-							const title = arr.join(' ');
+			<div className="flex-container">
+				<aside>
+					<h1 className="heading-xl"> Daily Nikon </h1>
+					<h2 className="heading-l">Hannah Cross</h2>
+					<p>Photography & Web Development</p>
+				</aside>
+				<div className="thumbnails">
+					{images.map((item, i) => {
+						const arr = item.node.Key.split('.')[0].split('_');
+						arr.splice(2, 0, '#');
+						const title = arr.join(' ');
 
-							return (
-								<>
-									<VisibilitySensor>
-										<div key={i} className="thumbnail">
-											<a href={`/day/${i + 1}`}>
-												<Img
-													src={`https://mydailynikon.s3-eu-west-1.amazonaws.com/${item.node.Key}`}
-													key={item.node.Key}
-													alt={item.node.Key}
-													decode={true}
-													loading="lazy"
-												/>
-											</a>
-											<h3>{title}</h3>
-										</div>
-									</VisibilitySensor>
-								</>
-							);
-						})}
-					</div>
+						return (
+							<>
+								<VisibilitySensor>
+									<div key={i} className="thumbnail">
+										<a href={`/day/${i + 1}`}>
+											<Img
+												src={`https://mydailynikon.s3-eu-west-1.amazonaws.com/${item.node.Key}`}
+												key={item.node.Key}
+												alt={item.node.Key}
+												decode={true}
+												loading="lazy"
+											/>
+										</a>
+										<h3>{title}</h3>
+									</div>
+								</VisibilitySensor>
+							</>
+						);
+					})}
 				</div>
-			</Layout>
-		</Suspense>
+			</div>
+		</Layout>
 	);
 };
 
