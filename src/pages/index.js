@@ -27,13 +27,12 @@ const IndexPage = ({ data }) => {
 	return (
 		<Layout>
 			<SEO title="Home" />
-
 			<div className="flex-container">
-				<aside>
+				<header>
 					<h1 className="heading-xl"> Daily Nikon </h1>
 					<h2 className="heading-l">Hannah Cross</h2>
 					<p>Photography & Web Development</p>
-				</aside>
+				</header>
 				<div className="thumbnails">
 					{images.map((item, i) => {
 						const arr = item.node.Key.split('.')[0].split('_');
