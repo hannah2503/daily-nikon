@@ -13,11 +13,11 @@ export default ({ pageContext: { photo } }) => {
 		<>
 			<SEO title={`Photo ${day}`} />
 
-			<header>
+			<header className="header-photo">
 				<a className="heading-link" href="/">
 					<span> ◁ </span>
 				</a>
-				<div className="header">
+				<div className="heading">
 					<h2>{day}</h2>
 				</div>
 			</header>
