@@ -1,5 +1,6 @@
 import React from 'react';
 import { Img } from 'react-image';
+
 import { graphql } from 'gatsby';
 import VisibilitySensor from 'react-visibility-sensor';
 
@@ -7,6 +8,7 @@ import Layout from '../components/layout';
 import SEO from '../components/seo';
 
 import '../scss/main.scss';
+import profile from '../images/profile.jpg';
 
 const IndexPage = ({ data }) => {
 	const images = data.allS3Image.edges.sort((a, b) => {
@@ -32,6 +34,9 @@ const IndexPage = ({ data }) => {
 					<h1 className="heading-xl"> Daily Nikon </h1>
 					<h2 className="heading-l">Hannah Cross</h2>
 					<p>Photography & Web Development</p>
+					<div className="heading-image-container">
+						<Img src={profile} alt="self-portrait with camera" />
+					</div>
 				</header>
 				<div className="thumbnails">
 					{images.map((item, i) => {

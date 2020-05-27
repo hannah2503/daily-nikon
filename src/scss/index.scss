@@ -27,6 +27,27 @@ header {
 		font-size: 20px;
 		text-align: center;
 	}
+
+	.heading-image-container {
+		padding: 10px;
+		height: 200px;
+		display: flex;
+		justify-content: center;
+		margin-top: 20px;
+
+		img {
+			height: 100%;
+			border-radius: 50%;
+			opacity: 0.7;
+			filter: grayscale(50%);
+		}
+
+		img:hover {
+			opacity: 1;
+			filter: grayscale(0%);
+			// cursor: pointer;
+		}
+	}
 }
 
 .thumbnails {
@@ -76,7 +97,6 @@ header {
 	}
 }
 
-
 @media all and (min-width: 900px) {
 	.flex-container {
 		display: flex;
@@ -87,19 +107,16 @@ header {
 		display: flex;
 		flex-direction: column;
 		width: 50%;
-		justify-content: center;
 		align-items: center;
 
 		.heading-xl {
 			font-size: 75px;
 			text-align: right;
-
 		}
 
 		.heading-l {
 			font-size: 50px;
 			text-align: right;
-
 		}
 
 		p {
@@ -107,11 +124,14 @@ header {
 			text-align: right;
 			margin-right: 20px;
 		}
+		.heading-image-container {
+			margin-top: 90px;
+		}
 	}
 
 	.thumbnails {
 		height: auto;
-		max-width: 900px;
+		max-width: 945px;
 		width: 100%;
 		display: flex;
 		flex-direction: row;
