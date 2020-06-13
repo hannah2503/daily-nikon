@@ -11,8 +11,9 @@ import '../scss/main.scss';
 import profile from '../images/profile.jpg';
 
 const IndexPage = ({ data }) => {
-	console.log(data)
-	const images = data.allFile.edges.sort((a, b) => {
+	const photos = data.allFile.edges.slice(2)
+
+	const images = photos.sort((a, b) => {
 		return (
 			new Date(
 				b.node.name.split('_')[0] +
@@ -26,7 +27,7 @@ const IndexPage = ({ data }) => {
 			)
 		);
 	});
-
+	console.log('images', images)
 	return (
 		<Layout>
 			<SEO title="Home" />
@@ -51,7 +52,7 @@ const IndexPage = ({ data }) => {
 									<div key={i} className="thumbnail">
 										<a href={`/day/${i + 1}`}>
 											<Img
-												src={`${item.node.url}`}
+												src={`${item.node.childImageSharp.fixed.src}`}
 												key={item.node.name}
 												alt={item.node.name}
 												decode={true}
@@ -81,7 +82,7 @@ export const query = graphql`
 						mediaType
 					}
 					extension
-					
+
 					childImageSharp {
 						fixed(grayscale: true, height: 400) {
 							base64
@@ -90,6 +91,7 @@ export const query = graphql`
 							srcWebp
 							srcSetWebp
 							originalName
+							src
 						}
 					}
 					name

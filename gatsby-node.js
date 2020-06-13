@@ -8,6 +8,12 @@ const {
 	createRemoteFileNode
 } = require("gatsby-source-filesystem")
 
+const wait = async () => {
+	setTimeout(() => {
+		console.log('waiting')
+	}, 200)
+}
+
 exports.onCreateNode = async ({
 	node,
 	actions: {
@@ -17,7 +23,9 @@ exports.onCreateNode = async ({
 	cache,
 	createNodeId,
 }) => {
-	if (node.internal.type === "S3Image" && node.internal.mediaType === "image/jpeg") {
+	if (node.internal.type === "S3Image") {
+		console.log(node)
+		await wait()
 		let fileNode = await createRemoteFileNode({
 			url: `https://mydailynikon.s3-eu-west-1.amazonaws.com/${node.Key}`, // string that points to the URL of the image
 			parentNodeId: node.id, // id of the parent node of the fileNode you are going to create
