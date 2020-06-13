@@ -48,7 +48,7 @@ const IndexPage = ({ data }) => {
 							<>
 								<VisibilitySensor>
 									<div key={i} className="thumbnail">
-										<a href={`/day/${i + 1}`}>
+										<a key={i + 1} href={`/day/${i + 1}`}>
 											<Img
 												src={`https://mydailynikon.s3-eu-west-1.amazonaws.com/${item.node.Key}`}
 												key={item.node.Key}
@@ -57,7 +57,7 @@ const IndexPage = ({ data }) => {
 												loading="lazy"
 											/>
 										</a>
-										<h3>{title}</h3>
+										<h3 key={title}>{title}</h3>
 									</div>
 								</VisibilitySensor>
 							</>
