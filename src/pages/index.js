@@ -11,16 +11,17 @@ import '../scss/main.scss';
 import profile from '../images/profile.jpg';
 
 const IndexPage = ({ data }) => {
-	const images = data.allS3Image.edges.sort((a, b) => {
+	console.log(data)
+	const images = data.allFile.edges.sort((a, b) => {
 		return (
 			new Date(
-				b.node.Key.split('_')[0] +
-					b.node.Key.split('_')[1] +
+				b.node.name.split('_')[0] +
+					b.node.name.split('_')[1] +
 					new Date().getFullYear()
 			) -
 			new Date(
-				a.node.Key.split('_')[0] +
-					a.node.Key.split('_')[1] +
+				a.node.name.split('_')[0] +
+					a.node.name.split('_')[1] +
 					new Date().getFullYear()
 			)
 		);
@@ -40,7 +41,7 @@ const IndexPage = ({ data }) => {
 				</header>
 				<div className="thumbnails">
 					{images.map((item, i) => {
-						const arr = item.node.Key.split('.')[0].split('_');
+						const arr = item.node.name.split('_');
 						arr.splice(2, 0, '#');
 						const title = arr.join(' ');
 
@@ -50,9 +51,9 @@ const IndexPage = ({ data }) => {
 									<div key={i} className="thumbnail">
 										<a href={`/day/${i + 1}`}>
 											<Img
-												src={`https://mydailynikon.s3-eu-west-1.amazonaws.com/${item.node.Key}`}
-												key={item.node.Key}
-												alt={item.node.Key}
+												src={`${item.node.url}`}
+												key={item.node.name}
+												alt={item.node.name}
 												decode={true}
 												loading="lazy"
 											/>
@@ -70,16 +71,28 @@ const IndexPage = ({ data }) => {
 };
 
 export const query = graphql`
-	query {
-		allS3Image {
+	query MyQuery {
+		allFile {
 			edges {
 				node {
 					id
-					Url
-					Key
-					Extension
-					Name
-					LastModified
+					internal {
+						type
+						mediaType
+					}
+					extension
+					
+					childImageSharp {
+						fixed(grayscale: true, height: 400) {
+							base64
+							tracedSVG
+							aspectRatio
+							srcWebp
+							srcSetWebp
+							originalName
+						}
+					}
+					name
 				}
 			}
 		}

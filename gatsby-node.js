@@ -4,9 +4,42 @@
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 
-// You can delete this file if you're not using it
-exports.createPages = async ({ actions, graphql }) => {
-	const { data } = await graphql(`
+const {
+	createRemoteFileNode
+} = require("gatsby-source-filesystem")
+
+exports.onCreateNode = async ({
+	node,
+	actions: {
+		createNode
+	},
+	store,
+	cache,
+	createNodeId,
+}) => {
+	if (node.internal.type === "S3Image" && node.internal.mediaType === "image/jpeg") {
+		let fileNode = await createRemoteFileNode({
+			url: `https://mydailynikon.s3-eu-west-1.amazonaws.com/${node.Key}`, // string that points to the URL of the image
+			parentNodeId: node.id, // id of the parent node of the fileNode you are going to create
+			createNode, // helper function in gatsby-node to generate the node
+			createNodeId, // helper function in gatsby-node to generate the node id
+			cache, // Gatsby's cache
+			store, // Gatsby's redux store
+		})
+		// if the file was created, attach the new node to the parent node
+		if (fileNode) {
+			node.featuredImg___NODE = fileNode.id
+		}
+	}
+}
+
+exports.createPages = async ({
+	actions,
+	graphql
+}) => {
+	const {
+		data
+	} = await graphql(`
 		query MyQuery {
 			allS3Image {
 				edges {
