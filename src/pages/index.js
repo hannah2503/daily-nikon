@@ -11,7 +11,7 @@ import '../scss/main.scss';
 import profile from '../images/profile.jpg';
 
 const IndexPage = ({ data }) => {
-	const photos = data.allFile.edges.slice(1)
+	const photos = data.allFile.edges.slice(1);
 
 	const images = photos.sort((a, b) => {
 		return (
@@ -27,19 +27,22 @@ const IndexPage = ({ data }) => {
 			)
 		);
 	});
-	console.log('images', images)
+
 	return (
 		<Layout>
 			<SEO title="Home" />
+			<header>
+				<h1 className="heading-xl"> Daily Nikon </h1>
+				<h2 className="heading-l">Hannah Cross</h2>
+				<p>Photography & Web Development</p>
+				<div className="heading-image-container">
+					<Img src={profile} alt="self-portrait with camera" />
+				</div>
+			</header>
+			<div className="divider-container">
+				<hr className="divider-line" />
+			</div>
 			<div className="flex-container">
-				<header>
-					<h1 className="heading-xl"> Daily Nikon </h1>
-					<h2 className="heading-l">Hannah Cross</h2>
-					<p>Photography & Web Development</p>
-					<div className="heading-image-container">
-						<Img src={profile} alt="self-portrait with camera" />
-					</div>
-				</header>
 				<div className="thumbnails">
 					{images.map((item, i) => {
 						const arr = item.node.name.split('_');
@@ -72,31 +75,31 @@ const IndexPage = ({ data }) => {
 };
 
 export const query = graphql`
-					query MyQuery {
-						allFile(filter: { internal: { mediaType: { nin: "image/png" } } }) {
-							edges {
-								node {
-									id
-									internal {
-										type
-										mediaType
-									}
-									extension
-									childImageSharp {
-										fixed(grayscale: true, height: 400) {
-											base64
-											tracedSVG
-											aspectRatio
-											srcWebp
-											srcSetWebp
-											originalName
-											src
-										}
-									}
-									name
-								}
-							}
+	query MyQuery {
+		allFile(filter: { internal: { mediaType: { nin: "image/png" } } }) {
+			edges {
+				node {
+					id
+					internal {
+						type
+						mediaType
+					}
+					extension
+					childImageSharp {
+						fixed(height: 400) {
+							base64
+							tracedSVG
+							aspectRatio
+							srcWebp
+							srcSetWebp
+							originalName
+							src
 						}
 					}
-				`;
+					name
+				}
+			}
+		}
+	}
+`;
 export default IndexPage;
