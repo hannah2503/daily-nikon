@@ -11,21 +11,23 @@ import '../scss/main.scss';
 import profile from '../images/profile.jpg';
 
 const IndexPage = ({ data }) => {
-	const images = data.allS3Image.edges.sort((a, b) => {
+	const photos = data.allFile.edges.slice(1)
+
+	const images = photos.sort((a, b) => {
 		return (
 			new Date(
-				b.node.Key.split('_')[0] +
-					b.node.Key.split('_')[1] +
+				b.node.name.split('_')[0] +
+					b.node.name.split('_')[1] +
 					new Date().getFullYear()
 			) -
 			new Date(
-				a.node.Key.split('_')[0] +
-					a.node.Key.split('_')[1] +
+				a.node.name.split('_')[0] +
+					a.node.name.split('_')[1] +
 					new Date().getFullYear()
 			)
 		);
 	});
-
+	console.log('images', images)
 	return (
 		<Layout>
 			<SEO title="Home" />
@@ -40,7 +42,7 @@ const IndexPage = ({ data }) => {
 				</header>
 				<div className="thumbnails">
 					{images.map((item, i) => {
-						const arr = item.node.Key.split('.')[0].split('_');
+						const arr = item.node.name.split('_');
 						arr.splice(2, 0, '#');
 						const title = arr.join(' ');
 
@@ -50,9 +52,9 @@ const IndexPage = ({ data }) => {
 									<div key={i} className="thumbnail">
 										<a key={i + 1} href={`/day/${i + 1}`}>
 											<Img
-												src={`https://mydailynikon.s3-eu-west-1.amazonaws.com/${item.node.Key}`}
-												key={item.node.Key}
-												alt={item.node.Key}
+												src={`${item.node.childImageSharp.fixed.src}`}
+												key={item.node.name}
+												alt={item.node.name}
 												decode={true}
 												loading="lazy"
 											/>
@@ -70,19 +72,31 @@ const IndexPage = ({ data }) => {
 };
 
 export const query = graphql`
-	query {
-		allS3Image {
-			edges {
-				node {
-					id
-					Url
-					Key
-					Extension
-					Name
-					LastModified
-				}
-			}
-		}
-	}
-`;
+					query MyQuery {
+						allFile(filter: { internal: { mediaType: { nin: "image/png" } } }) {
+							edges {
+								node {
+									id
+									internal {
+										type
+										mediaType
+									}
+									extension
+									childImageSharp {
+										fixed(grayscale: true, height: 400) {
+											base64
+											tracedSVG
+											aspectRatio
+											srcWebp
+											srcSetWebp
+											originalName
+											src
+										}
+									}
+									name
+								}
+							}
+						}
+					}
+				`;
 export default IndexPage;
