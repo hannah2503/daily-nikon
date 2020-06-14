@@ -24,7 +24,6 @@ exports.onCreateNode = async ({
 	createNodeId,
 }) => {
 	if (node.internal.type === "S3Image") {
-		console.log(node)
 		await wait()
 		let fileNode = await createRemoteFileNode({
 			url: `https://mydailynikon.s3-eu-west-1.amazonaws.com/${node.Key}`, // string that points to the URL of the image
@@ -49,53 +48,72 @@ exports.createPages = async ({
 		data
 	} = await graphql(`
 		query MyQuery {
-			allS3Image {
-				edges {
-					node {
-						id
-						ETag
-						Extension
-						IsTruncated
-						Key
-						LastModified
-						KeyCount
-						MaxKeys
-						Name
-						Prefix
-						StorageClass
-						Url
-						Size
+			allFile(filter: {
+					internal: {
+						mediaType: {
+							nin: "image/png"
+						}
 					}
+				}) {
+					edges {
+						node {
+							id
+							name
+							internal {
+								type
+								mediaType
+							}
+							extension
+							childImageSharp {
+								fixed(grayscale: false, height: 600) {
+									base64
+									tracedSVG
+									aspectRatio
+									srcWebp
+									srcSetWebp
+									originalName
+									src
+								}
+							}
+							
+						}
 				}
 			}
 		}
 	`);
 
-	const totalPages = data.allS3Image.edges.length;
-	data.allS3Image.edges
-		.sort((a, b) => {
-			return (
-				parseInt(b.node.Key.split('_')[0]) - parseInt(a.node.Key.split('_')[0])
-			);
-		})
-		.forEach((item, index) => {
-			const imgUrl = `https://mydailynikon.s3-eu-west-1.amazonaws.com/${item.node.Key}`;
-			const day = `${item.node.Key.split('_')[0]} ${
-				item.node.Key.split('_')[1]
+	const photos = data.allFile.edges.slice(1)
+	const totalPages = photos.length;
+	photos.sort((a, b) => {
+		return (
+			new Date(
+				b.node.name.split('_')[0] +
+				b.node.name.split('_')[1] +
+				new Date().getFullYear()
+			) -
+			new Date(
+				a.node.name.split('_')[0] +
+				a.node.name.split('_')[1] +
+				new Date().getFullYear()
+			)
+		);
+	}).forEach((item, index) => {
+
+		const day = `${item.node.name.split('_')[0]} ${
+				item.node.name.split('_')[1]
 			} ${new Date().getFullYear()}`;
 
-			actions.createPage({
-				path: `day/${index + 1}`,
-				component: require.resolve('./src/templates/photo.js'),
-				context: {
-					photo: {
-						...item.node,
-						imgUrl,
-						day,
-						totalPages,
-						pageNumber: index + 1,
-					},
+		actions.createPage({
+			path: `day/${index + 1}`,
+			component: require.resolve('./src/templates/photo.js'),
+			context: {
+				photo: {
+					...item.node,
+					day,
+					totalPages,
+					pageNumber: index + 1,
 				},
-			});
+			},
 		});
+	});
 };

@@ -11,7 +11,7 @@ import '../scss/main.scss';
 import profile from '../images/profile.jpg';
 
 const IndexPage = ({ data }) => {
-	const photos = data.allFile.edges.slice(2)
+	const photos = data.allFile.edges.slice(1)
 
 	const images = photos.sort((a, b) => {
 		return (
@@ -72,32 +72,31 @@ const IndexPage = ({ data }) => {
 };
 
 export const query = graphql`
-	query MyQuery {
-		allFile {
-			edges {
-				node {
-					id
-					internal {
-						type
-						mediaType
-					}
-					extension
-
-					childImageSharp {
-						fixed(grayscale: true, height: 400) {
-							base64
-							tracedSVG
-							aspectRatio
-							srcWebp
-							srcSetWebp
-							originalName
-							src
+					query MyQuery {
+						allFile(filter: { internal: { mediaType: { nin: "image/png" } } }) {
+							edges {
+								node {
+									id
+									internal {
+										type
+										mediaType
+									}
+									extension
+									childImageSharp {
+										fixed(grayscale: true, height: 400) {
+											base64
+											tracedSVG
+											aspectRatio
+											srcWebp
+											srcSetWebp
+											originalName
+											src
+										}
+									}
+									name
+								}
+							}
 						}
 					}
-					name
-				}
-			}
-		}
-	}
-`;
+				`;
 export default IndexPage;

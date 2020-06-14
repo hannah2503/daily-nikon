@@ -7,7 +7,16 @@ import Navigation from '../components/navigation';
 import '../scss/main.scss';
 
 export default ({ pageContext: { photo } }) => {
-	const { Key, pageNumber, totalPages, imgUrl, day } = photo;
+	console.log(photo);
+	const {
+		day,
+		pageNumber,
+		totalPages,
+		name,
+		childImageSharp: {
+			fixed: { src },
+		},
+	} = photo;
 
 	return (
 		<>
@@ -24,7 +33,7 @@ export default ({ pageContext: { photo } }) => {
 
 			<main className="container">
 				<div className="image-container">
-					<Img src={imgUrl} key={Key} alt={Key} decode={true} loading="lazy" />
+					<Img src={src} key={name} alt={name} decode={true} loading="lazy" />
 				</div>
 
 				<div className="sub-text">

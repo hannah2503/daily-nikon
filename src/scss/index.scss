@@ -67,10 +67,11 @@ header {
 		position: relative;
 
 		img {
-			max-width: 280px;
-			width: fit-content;
+			width: 280px;
 			margin: 10px;
 			z-index: -1;
+			margin: 0 auto;
+			overflow: hidden;
 		}
 
 		h3 {
@@ -124,6 +125,7 @@ header {
 			text-align: right;
 			margin-right: 20px;
 		}
+
 		.heading-image-container {
 			margin-top: 90px;
 		}
@@ -141,8 +143,8 @@ header {
 
 		.thumbnail {
 			img {
-				max-width: 280px;
-				width: fit-content;
+				width: 280px;
+				overflow: hidden;
 				margin: 10px;
 			}
 		}
