@@ -98,10 +98,10 @@ exports.createPages = async ({
 			)
 		);
 	}).forEach((item, index) => {
-
+		const year = item.node.name.split('_')[2] === '2021' ? '2021' : '2020';
 		const day = `${item.node.name.split('_')[0]} ${
 				item.node.name.split('_')[1]
-			} ${new Date().getFullYear()}`;
+			} ${year}`;
 
 		actions.createPage({
 			path: `day/${index + 1}`,

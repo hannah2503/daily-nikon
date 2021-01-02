@@ -14,19 +14,24 @@ const IndexPage = ({ data }) => {
 	const photos = data.allFile.edges.slice(1);
 
 	const images = photos.sort((a, b) => {
+		const yearA = a.node.name.split('_')[2] === '2021' ? '2021' : '2020';
+		const yearB  = b.node.name.split('_')[2] === '2021' ? '2021' : '2020';
+		
 		return (
 			new Date(
 				b.node.name.split('_')[0] +
 					b.node.name.split('_')[1] +
-					new Date().getFullYear()
+					yearB
 			) -
 			new Date(
 				a.node.name.split('_')[0] +
 					a.node.name.split('_')[1] +
-					new Date().getFullYear()
+					yearA
 			)
 		);
 	});
+
+	console.log(images)
 
 	return (
 		<Layout>
