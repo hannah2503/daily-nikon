@@ -1,7 +1,7 @@
 footer {
     height: 45px;
-    width: 95%;
-    position: relative;
+    width: 100%;
+    position: absolute;
     bottom: 0;
     left: 0;
     text-align: center;
@@ -11,22 +11,13 @@ footer {
 
     .layout {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         height: 100vh;
     }
 
-    footer {
-        display: flex;
-        align-self: flex-end;
-        justify-content: flex-end;
-        margin-top: 20px;
-        width: 100%;
-
-        p {
-            padding-right: 20px;
-            text-align: right;
-        }
-
+    main {
+        overflow: scroll;
+        height: 800px;
     }
 
 }

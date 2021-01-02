@@ -1,6 +1,6 @@
 .flex-container {
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 }
 
 header {
@@ -63,7 +63,6 @@ header {
 
 
 .thumbnails {
-	height: 100%;
 	max-width: 900px;
 	width: 100%;
 	display: flex;
@@ -99,30 +98,26 @@ header {
 }
 
 @media all and (min-width: 900px) {
-	.flex-container {
-		display: flex;
-		flex-direction: row;
-	}
 
 	header {
 		display: flex;
 		flex-direction: column;
-		width: 100%;
+		width: 33%;
 		align-items: center;
-
+	
 		.heading-xl {
 			font-size: 75px;
-			text-align: right;
+			text-align: center;
 		}
 
 		.heading-l {
 			font-size: 50px;
-			text-align: right;
+			text-align: center;
 		}
 
 		p {
 			font-size: 20px;
-			text-align: right;
+			text-align: center;
 			margin-right: 20px;
 		}
 
@@ -135,15 +130,14 @@ header {
 
 
 	.thumbnails {
-		height: auto;
 		max-width: 945px;
-		width: 100%;
+		width: auto;
 		display: flex;
 		flex-direction: row;
 		flex-wrap: wrap;
 		justify-content: center;
 		align-items: center;
-		margin: 0 auto;
+		margin: 20px auto;
 
 		.thumbnail {
 			img {

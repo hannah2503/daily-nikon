@@ -8,7 +8,6 @@ import Layout from '../components/layout';
 import SEO from '../components/seo';
 
 import '../scss/main.scss';
-import profile from '../images/profile.jpg';
 
 const IndexPage = ({ data }) => {
 	const photos = data.allFile.edges.slice(1);
@@ -31,23 +30,9 @@ const IndexPage = ({ data }) => {
 		);
 	});
 
-	console.log(images)
-
 	return (
 		<Layout>
 			<SEO title="Home" />
-			<header>
-				<h1 className="heading-xl"> Daily Nikon </h1>
-				<h2 className="heading-l">Hannah Cross</h2>
-				<p>Photography & Web Development</p>
-				<div className="heading-image-container">
-					<Img src={profile} alt="self-portrait with camera" />
-				</div>
-			</header>
-			<div className="divider-container">
-				<hr className="divider-line" />
-			</div>
-			<div className="flex-container">
 				<div className="thumbnails">
 					{images.map((item, i) => {
 						const arr = item.node.name.split('_');
@@ -74,7 +59,6 @@ const IndexPage = ({ data }) => {
 						);
 					})}
 				</div>
-			</div>
 		</Layout>
 	);
 };
