@@ -35,8 +35,7 @@ header {
 aside {
 	display: flex;
 	flex-direction: column;
-	margin: 20px 0;
-	width: 100%;
+	margin: 20px;
 
 
 	.heading-l {
@@ -96,7 +95,8 @@ aside {
 	aside {
 		display: flex;
 		flex-direction: column;
-		width: 40%;
+		width: 450px;
+		margin-left: 20px;
 	
 
 		.heading-l {
