@@ -1,16 +1,16 @@
+import { graphql } from 'gatsby';
 import React from 'react';
 import { Img } from 'react-image';
-
-import { graphql } from 'gatsby';
 import VisibilitySensor from 'react-visibility-sensor';
-
 import Layout from '../components/layout';
 import SEO from '../components/seo';
-
 import '../scss/main.scss';
 
+
+
+
 const IndexPage = ({ data }) => {
-	const photos = data.allFile.edges.slice(1);
+	const photos = data.allFile.edges;
 	const images = photos.sort((a, b) => {
 		const yearA = a.node.name.split('_')[2] === '2021' ? '2021' : '2020';
 		const yearB  = b.node.name.split('_')[2] === '2021' ? '2021' : '2020';
@@ -75,10 +75,14 @@ const IndexPage = ({ data }) => {
 
 export const query = graphql`
 	query MyQuery {
-		allFile(filter: { internal: { mediaType: { nin: "image/png" } } }) {
+		allFile(
+			filter: {name: {nin: "profile", ne: "favicon"}}, 
+			sort: {order: ASC, fields: birthTime}
+			) {
 			edges {
 				node {
 					id
+					name
 					internal {
 						type
 						mediaType
@@ -86,20 +90,19 @@ export const query = graphql`
 					birthTime
 					extension
 					childImageSharp {
-						fixed(height: 400) {
-							base64
-							tracedSVG
-							aspectRatio
-							srcWebp
-							srcSetWebp
-							originalName
-							src
+						fixed(grayscale: false, height: 400) {
+						base64
+						tracedSVG
+						aspectRatio
+						srcWebp
+						srcSetWebp
+						originalName
+						src
 						}
 					}
-					name
 				}
 			}
-		}
+    	}
 	}
 `;
 export default IndexPage;
