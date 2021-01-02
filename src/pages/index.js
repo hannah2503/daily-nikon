@@ -11,7 +11,6 @@ import '../scss/main.scss';
 
 const IndexPage = ({ data }) => {
 	const photos = data.allFile.edges.slice(1);
-
 	const images = photos.sort((a, b) => {
 		const yearA = a.node.name.split('_')[2] === '2021' ? '2021' : '2020';
 		const yearB  = b.node.name.split('_')[2] === '2021' ? '2021' : '2020';
@@ -29,6 +28,23 @@ const IndexPage = ({ data }) => {
 			)
 		);
 	});
+
+	const imageList = images.sort((a,b) => {
+		const monthA = a.node.name.split('_')[1];
+		const monthB= b.node.name.split('_')[1];
+		if(monthA === monthB){
+			return b.node.name.split('_')[2] - a.node.name.split('_')[2]
+		}
+	})
+
+	const finalImageList = imageList.sort((a,b)=> {
+			const monthA = a.node.name.split('_')[1];
+		const monthB= b.node.name.split('_')[1];
+		if(monthA === monthB){
+			return b.node.name.split('_')[0] - a.node.name.split('_')[0]
+		}
+	})
+	console.log(finalImageList)
 
 	return (
 		<Layout>
@@ -49,7 +65,6 @@ const IndexPage = ({ data }) => {
 												key={item.node.name}
 												alt={item.node.name}
 												decode={true}
-												loading="lazy"
 											/>
 										</a>
 										<h3 key={title}>{title}</h3>
@@ -73,6 +88,7 @@ export const query = graphql`
 						type
 						mediaType
 					}
+					birthTime
 					extension
 					childImageSharp {
 						fixed(height: 400) {

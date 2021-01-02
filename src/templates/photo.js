@@ -7,7 +7,6 @@ import Navigation from '../components/navigation';
 import '../scss/main.scss';
 
 export default ({ pageContext: { photo } }) => {
-	console.log(photo);
 	const {
 		day,
 		pageNumber,

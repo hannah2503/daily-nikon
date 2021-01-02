@@ -63,6 +63,7 @@ exports.createPages = async ({
 								type
 								mediaType
 							}
+							birthTime
 							extension
 							childImageSharp {
 								fixed(grayscale: false, height: 600) {
@@ -85,23 +86,36 @@ exports.createPages = async ({
 	const photos = data.allFile.edges.slice(1)
 	const totalPages = photos.length;
 	photos.sort((a, b) => {
+		const yearA = a.node.name.split('_')[2] === '2021' ? '2021' : '2020';
+		const yearB  = b.node.name.split('_')[2] === '2021' ? '2021' : '2020';
+		
 		return (
 			new Date(
 				b.node.name.split('_')[0] +
-				b.node.name.split('_')[1] +
-				new Date().getFullYear()
+					b.node.name.split('_')[1] +
+					yearB
 			) -
 			new Date(
 				a.node.name.split('_')[0] +
-				a.node.name.split('_')[1] +
-				new Date().getFullYear()
+					a.node.name.split('_')[1] +
+					yearA
 			)
 		);
+	}).sort((a,b)=> {
+		const monthA = a.node.name.split('_')[1];
+		const monthB= b.node.name.split('_')[1];
+		if(monthA === monthB){
+			return b.node.name.split('_')[2] - a.node.name.split('_')[2]
+		}
+	}).sort((a,b)=>{
+		const monthA = a.node.name.split('_')[1];
+		const monthB= b.node.name.split('_')[1];
+		if(monthA === monthB){
+			return b.node.name.split('_')[0] - a.node.name.split('_')[0]
+		}
 	}).forEach((item, index) => {
 		const year = item.node.name.split('_')[2] === '2021' ? '2021' : '2020';
-		const day = `${item.node.name.split('_')[0]} ${
-				item.node.name.split('_')[1]
-			} ${year}`;
+		const day = `${item.node.name.split('_')[0]} ${item.node.name.split('_')[1]} ${year}`;
 
 		actions.createPage({
 			path: `photo/${index + 1}`,

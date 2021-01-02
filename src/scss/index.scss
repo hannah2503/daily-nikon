@@ -49,8 +49,6 @@ aside {
 
 }
 
-
-
 .thumbnails {
 	max-width: 900px;
 	width: 100%;
@@ -61,7 +59,8 @@ aside {
 	justify-content: center;
 
 	.thumbnail {
-		height: 200px;
+		max-height: 200px;
+		height: auto;
 		overflow: hidden;
 		opacity: 1;
 		position: relative;
@@ -126,6 +125,7 @@ aside {
 		margin: 20px auto;
 
 		.thumbnail {
+
 			img {
 				width: 280px;
 				overflow: hidden;
