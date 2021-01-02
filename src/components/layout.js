@@ -15,16 +15,18 @@ import '../scss/main.scss';
 
 const Layout = ({ children }) => {
 	return (
-		<div>
-			<div className="layout">
+		<div className="screen">
 				<header>
+					<div className="heading-image-container">
+							<Img src={profile} alt="self-portrait with camera" />
+					</div>	
 					<h1 className="heading-xl"> Daily Nikon </h1>
+				</header>
+			<div className="layout">
+				<aside>
 					<h2 className="heading-l">Hannah Cross</h2>
 					<p>Photography & Web Development</p>
-					<div className="heading-image-container">
-						<Img src={profile} alt="self-portrait with camera" />
-					</div>		
-				</header>	
+				</aside>
 				<main>{children}</main>
 			</div>
 			<footer>
