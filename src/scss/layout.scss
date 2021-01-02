@@ -8,16 +8,16 @@ footer {
 }
 
 @media all and (min-width: 900px) {
-    .screen {
-        overflow:hidden;
-        height: 100vh;
-    }
+    // .screen {
+    //     overflow:hidden;
+    //     height: 104vh;
+    // }
 
     .layout {
         display: flex;
         flex-direction: row;
         justify-content: center;
-        height: 97vh;
+        height: 96vh;
     }
 
     main {
