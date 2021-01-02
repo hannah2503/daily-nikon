@@ -5,17 +5,17 @@ function Navigation({pageNumber, totalPages}) {
 	return (
 		<div className="page-links-container">
 			{pageNumber === 1 && pageNumber < totalPages && (
-				<a className="page-links" href={`/day/${pageNumber + 1}`}>
+				<a className="page-links" href={`/photo/${pageNumber + 1}`}>
 					Next
 				</a>
 			)}
 
 			{pageNumber > 1 && pageNumber < totalPages && (
 				<div>
-					<a className="page-links" href={`/day/${pageNumber - 1}`}>
+					<a className="page-links" href={`/photo/${pageNumber - 1}`}>
 						Back
 					</a>
-					<a className="page-links" href={`/day/${pageNumber + 1}`}>
+					<a className="page-links" href={`/photo/${pageNumber + 1}`}>
 						Next
 					</a>
 				</div>
@@ -23,7 +23,7 @@ function Navigation({pageNumber, totalPages}) {
 
 			{pageNumber > 1 && pageNumber === totalPages && (
 				<div>
-					<a className="page-links" href={`/day/${pageNumber - 1}`}>
+					<a className="page-links" href={`/photo/${pageNumber - 1}`}>
 						Back
 					</a>
 				</div>

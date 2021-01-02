@@ -104,7 +104,7 @@ exports.createPages = async ({
 			} ${year}`;
 
 		actions.createPage({
-			path: `day/${index + 1}`,
+			path: `photo/${index + 1}`,
 			component: require.resolve('./src/templates/photo.js'),
 			context: {
 				photo: {

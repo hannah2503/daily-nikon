@@ -58,7 +58,7 @@ const IndexPage = ({ data }) => {
 							<>
 								<VisibilitySensor>
 									<div key={i} className="thumbnail">
-										<a key={i + 1} href={`/day/${i + 1}`}>
+										<a key={i + 1} href={`/photo/${i + 1}`}>
 											<Img
 												src={`${item.node.childImageSharp.fixed.src}`}
 												key={item.node.name}
