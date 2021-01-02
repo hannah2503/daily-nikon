@@ -104,15 +104,12 @@ exports.createPages = async ({
 	}).sort((a,b)=> {
 		const monthA = a.node.name.split('_')[1];
 		const monthB= b.node.name.split('_')[1];
-		if(monthA === monthB){
-			return b.node.name.split('_')[2] - a.node.name.split('_')[2]
-		}
+		return monthA === monthB && b.node.name.split('_')[2] - a.node.name.split('_')[2]
+		
 	}).sort((a,b)=>{
 		const monthA = a.node.name.split('_')[1];
 		const monthB= b.node.name.split('_')[1];
-		if(monthA === monthB){
-			return b.node.name.split('_')[0] - a.node.name.split('_')[0]
-		}
+		return monthA === monthB && b.node.name.split('_')[0] - a.node.name.split('_')[0]
 	}).forEach((item, index) => {
 		const year = item.node.name.split('_')[2] === '2021' ? '2021' : '2020';
 		const day = `${item.node.name.split('_')[0]} ${item.node.name.split('_')[1]} ${year}`;

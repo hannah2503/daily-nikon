@@ -32,25 +32,20 @@ const IndexPage = ({ data }) => {
 	const imageList = images.sort((a,b) => {
 		const monthA = a.node.name.split('_')[1];
 		const monthB= b.node.name.split('_')[1];
-		if(monthA === monthB){
-			return b.node.name.split('_')[2] - a.node.name.split('_')[2]
-		}
+		return monthA === monthB && b.node.name.split('_')[2] - a.node.name.split('_')[2]
 	})
 
 	const finalImageList = imageList.sort((a,b)=> {
-			const monthA = a.node.name.split('_')[1];
+		const monthA = a.node.name.split('_')[1];
 		const monthB= b.node.name.split('_')[1];
-		if(monthA === monthB){
-			return b.node.name.split('_')[0] - a.node.name.split('_')[0]
-		}
+		return monthA === monthB && b.node.name.split('_')[0] - a.node.name.split('_')[0]
 	})
-	console.log(finalImageList)
 
 	return (
 		<Layout>
 			<SEO title="Home" />
 				<div className="thumbnails">
-					{images.map((item, i) => {
+					{finalImageList.map((item, i) => {
 						const arr = item.node.name.split('_');
 						arr.splice(2, 0, '#');
 						const title = arr.join(' ');
