@@ -33,10 +33,10 @@ const Layout = ({ children }) => {
 						I dusted off a Nikon camera my aunt had given to me and decided to make a start at figuring out how to use it!
 					</p>
 					<p>
-						Whilst I enjoy taking snaps of the world around me; of the things that bring me joy. I also thought this would be a good excuse to experiment with some web development tools.
+						Whilst I enjoy taking snaps of the world around me; of the things that bring me joy, I also thought this would be a good excuse to experiment with some web development tools.
 					</p>
 					<p>
-						This website has been made with Gatsby, AWS S3 and Netlify. It is an ongoing project, subject to constant tweaks and modifications as I keep learning.
+						This website has been made with Gatsby, AWS S3 and Netlify. It is an ongoing project, subject to constant tweaks and modifications as I continue learning.
 					</p>
 				</aside>
 				<main>{children}</main>
