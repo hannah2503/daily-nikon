@@ -25,7 +25,7 @@ const Layout = ({ children }) => {
 			<div className="layout">
 				<aside>
 					<h2 className="heading-l">Hannah Cross</h2>
-					<p>Photography & Web Development</p>
+					<h3>Photography & Web Development</h3>
 					<p>
 						After the novelty of a forced working from home had worn off, I needed a creative outlet to allow myself to do something that wasn't work related.
 					</p>
@@ -36,7 +36,7 @@ const Layout = ({ children }) => {
 						Whilst I enjoy taking snaps of the world around me; of the things that bring me joy. I also thought this would be a good excuse to experiment with some web development tools.
 					</p>
 					<p>
-						This website has been made with Gatsby, AWS S3 and Netlify. It is an ongoing project, subject to constant tweaks and modoifications as I keep learning.
+						This website has been made with Gatsby, AWS S3 and Netlify. It is an ongoing project, subject to constant tweaks and modifications as I keep learning.
 					</p>
 				</aside>
 				<main>{children}</main>
