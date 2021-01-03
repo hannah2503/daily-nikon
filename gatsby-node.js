@@ -67,56 +67,42 @@ exports.createPages = async ({ actions, graphql }) => {
 					}
 				}
 			}
+			 allS3Object {
+				nodes {
+					LastModified
+					Key
+				}
+			}
 		}
 	`);
-
 	const photos = data.allFile.edges;
+	const photoInfo = data.allS3Object.nodes;
 	const totalPages = photos.length;
-	photos
-		.sort((a, b) => {
-			const yearA = a.node.name.split('_')[2] === '2021' ? '2021' : '2020';
-			const yearB = b.node.name.split('_')[2] === '2021' ? '2021' : '2020';
-
-			return (
-				new Date(
-					b.node.name.split('_')[0] + b.node.name.split('_')[1] + yearB
-				) -
-				new Date(a.node.name.split('_')[0] + a.node.name.split('_')[1] + yearA)
-			);
-		})
-		.sort((a, b) => {
-			const monthA = a.node.name.split('_')[1];
-			const monthB = b.node.name.split('_')[1];
-			return (
-				monthA === monthB &&
-				b.node.name.split('_')[2] - a.node.name.split('_')[2]
-			);
-		})
-		.sort((a, b) => {
-			const monthA = a.node.name.split('_')[1];
-			const monthB = b.node.name.split('_')[1];
-			return (
-				monthA === monthB &&
-				b.node.name.split('_')[0] - a.node.name.split('_')[0]
-			);
-		})
-		.forEach((item, index) => {
-			const year = item.node.name.split('_')[2] === '2021' ? '2021' : '2020';
-			const day = `${item.node.name.split('_')[0]} ${
-				item.node.name.split('_')[1]
-			} ${year}`;
-
-			actions.createPage({
-				path: `photo/${index + 1}`,
-				component: require.resolve('./src/templates/photo.js'),
-				context: {
-					photo: {
-						...item.node,
-						day,
-						totalPages,
-						pageNumber: index + 1,
-					},
+	const photosWithDetails = photos.map((item) => {
+		const [details] = photoInfo.filter((detail) => detail.Key.split('.')[0] === item.node.name);
+		const year = item.node.name.split('_')[2] === '2021' ? '2021' : '2020';
+		const day = `${item.node.name.split('_')[0]} ${item.node.name.split('_')[1]} ${year}`;
+		const merged = {
+			...item.node,
+			lastModified: details.LastModified,
+			day,
+			totalPages
+		};
+		return merged;
+	})
+	photosWithDetails.sort((a, b) => {
+		return new Date(b.lastModified) - new Date(a.lastModified);
+	}).forEach((item, index) => {
+		console.log({ item })
+		actions.createPage({
+			path: `photo/${index + 1}`,
+			component: require.resolve('./src/templates/photo.js'),
+			context: {
+				photo: {
+					...item,
+					pageNumber: index + 1,
 				},
-			});
+			},
 		});
+	});
 };
